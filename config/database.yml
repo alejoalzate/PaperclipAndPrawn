@@ -1,0 +1,30 @@
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: escuela2_development
+  pool: 5
+  username: postgres
+  password: postgres
+  host: localhost
+  port: 5433
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: escuela2_test
+  pool: 5
+  username: postgres
+  password: postgres
+  host: localhost
+  port: 5433
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: escuela2_production
+  pool: 5
+  username: postgres
+  password: postgres
+  host: localhost
+  port: 5433

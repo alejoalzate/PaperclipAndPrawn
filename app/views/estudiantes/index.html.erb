@@ -1,0 +1,64 @@
+<%- model_class = Estudiante -%>
+  <div class="page-header">
+    <h1><%= link_to image_tag("universidad.png")%><i><%= @curso.nombre %></i></h1>
+  </div>    
+<div class="row">
+  <div class="span4">
+    <%= form_tag request.path, :class => 'form-vertical', :method => 'get' do %>
+      <%= content_tag :label, :class => 'control-label' do %>
+      <h4>Bucar Estudiantes</h4>
+          <%= text_field_tag :search, params[:search], :class => 'text_field' %>
+          <%= submit_tag "Consultar", :class => 'btn btn-medium', :name => nil %>
+          <%= content_tag :label, :class => 'control-label' do %>
+      <h4>Registros Mostrar</h4>
+          <%= text_field_tag :registro, params[:registro], :class => 'text_field'  %>
+          <%= submit_tag "Consultar", :class => 'btn btn-medium'  %>
+    </div>
+    <% end %>
+   <% end %>
+  <% end %>   
+</div>
+      <table class="table table-bordered pretty">
+        <thead>
+          <tr>
+            <th><%=  sortable "id" %></th>
+            <th>Nombres</th>
+            <th>cedula</th>
+            <th>email</th>
+            <th>direccion</th>
+            <th>fecha nacimiento</th>
+           
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @estudiantes %>
+        </tbody>
+          <tfoot>
+            <tr>
+              <td><%= link_to image_tag("participantes.png"), new_curso_estudiante_path, :remote => true  %> </td>
+              <td><%= link_to image_tag("atras.png"), cursos_path %></td>
+            </tr>
+          </tfoot>
+        <tfoot>
+          <tr>
+            <td><b>Total Aprendices</b>
+            </td>
+            <td><%= @estudiantes.total_entries %>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="row">
+    <div class="span2"> 
+  </div>
+  <div class="span10">
+  
+    <div class="pagination">
+    </ul>
+    <%= will_paginate @estudiantes, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
+    &raquo;' %>
+  </ul>
+  </div>
+</div>
+</div>

@@ -1,0 +1,12 @@
+<%- model_class = Curso -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<div class='team'>
+  <p><b>Id:</b> <%= @curso.id %></p>
+  <p><b>Nombre:</b> <%= @curso.nombre %></p>
+  <p><b>Ficha:</b> <%= @curso.ficha %></p>
+  <p><b>Instructor:</b> <%= @curso.instructor_id %></p>
+   
+</div>

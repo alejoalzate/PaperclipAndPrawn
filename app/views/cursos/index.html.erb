@@ -1,0 +1,63 @@
+
+<%- model_class = Curso -%>
+<div class="page-header">
+  <h1><%= link_to image_tag("universidad.png ")%><i>Cursos</i></h1>
+</div>
+
+<div class="row">
+  <div class="span4">
+    <%= form_tag request.path, :class => 'form-vertical', :method => 'get' do %>
+      <%= content_tag :label, :class => 'control-label' do %>
+      <h4>Bucar Cursos</h4>
+          <%= text_field_tag :search, params[:search], :class => 'text_field' %>
+          <%= submit_tag "Consultar", :class => 'btn btn-medium', :name => nil %>
+          <%= content_tag :label, :class => 'control-label' do %>
+      <h4>Registros Mostrar</h4>
+          <%= text_field_tag :registro, params[:registro], :class => 'text_field'  %>
+          <%= submit_tag "Consultar", :class => 'btn btn-medium'  %>
+    </div>
+    <% end %>
+   <% end %>
+  <% end %>   
+</div>   
+
+<table class="table table-bordered pretty ">
+  <thead>
+    <tr >
+      <th><%= sortable "id" %></th>
+      <th>Nombres</th>
+      <th>fichas</th>
+      <th>Instructor-Asignados</th>
+    
+       
+    </tr>
+  </thead>
+  <tbody>
+     <%= render @cursos %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td><%= link_to image_tag('nuevo.png', :tile  => "Mostrar Equipos"),  new_curso_path,  :remote => true %></td>
+      
+    </tr>
+  </tfoot>
+ <tfoot>
+    <tr>
+      <td>
+    <b>Total Cursos</b>
+  </td>
+    <td>
+    <%= @cursos.total_entries %>
+  </td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+  <div align="center">
+    <div class="pagination">
+    </ul>
+    <%= will_paginate @cursos, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
+    &raquo;' %>
+  </ul>
+  </div>
+</div>

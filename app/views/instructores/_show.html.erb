@@ -1,0 +1,16 @@
+<%- model_class = Instructor -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<div class='team'>
+  <p><%= image_tag @instructor.avatar.url(:medium) %></p>
+  <p><b>Id:</b> <%= @instructor.id %></p>
+  <p><b>Nombre:</b> <%= @instructor.nombre %></p>
+  <p><b>Cedula:</b> <%= @instructor.cedula %></p>
+  <p><b>Email:</b> <%= @instructor.email %></p>
+  <p><b>Direccion:</b> <%= @instructor.direccion %></p>
+  <p><b>Materia:</b> <%= @instructor.materia_id %></p>
+ 
+</div>
+

@@ -1,0 +1,65 @@
+<%- model_class = Horario -%>
+<div class="page-header">
+  <h1><%= link_to image_tag("universidad.png")%><i>Horarios</i></h1>
+</div>
+<div class="row">
+  <div class="span4">
+    <%= form_tag request.path, :class => 'form-vertical', :method => 'get' do %>
+      <%= content_tag :label, :class => 'control-label' do %>
+      <h4>Bucar Horarios</h4>
+          <%= text_field_tag :search, params[:search], :class => 'text_field' %>
+          <%= submit_tag "Consultar", :class => 'btn btn-medium', :name => nil %>
+          <%= content_tag :label, :class => 'control-label' do %>
+      <h4>Registros Mostrar</h4>
+          <%= text_field_tag :registro, params[:registro], :class => 'text_field'  %>
+          <%= submit_tag "Consultar", :class => 'btn btn-medium'  %>
+    </div>
+    <% end %>
+   <% end %>
+  <% end %>   
+</div>
+<table class="table table-bordered pretty">
+
+  <thead>
+    <tr >
+      <th><%= sortable "id" %></th>
+      <th>Fecha</th>
+      <th>Hora</th>
+       <th>Aula</th>
+       <th>Curso</th>
+       <th>Instructor</th>
+       <th>materia</th>
+    </tr>
+  </thead>
+  <tbody>
+     <%= render @horarios %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td><%= link_to image_tag('nuevo.png', :tile  => "Mostrar Equipos"),  new_horario_path,  :remote => true %></td>
+   
+    </tr>
+  </tfoot>
+  <tfoot>
+    <tr>
+      <td>
+    <b>Total Horarios</b>
+  </td>
+    <td>
+    <%= @horarios.total_entries %>
+  </td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+
+   <br />
+  <br />
+  <div align="center">
+    <div class="pagination">
+    </ul>
+    <%= will_paginate @horarios, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
+    &raquo;' %>
+  </ul>
+  </div>
+</div>
